@@ -1,0 +1,23 @@
+
+    <table class="table-striped  table-hover table-responsive">
+        <thead>
+        <th>Name</th>
+        <th>Description</th>
+        </thead>
+        <tbody>
+        <tr ng-repeat="chore in grabBag.bagItems"><!--works like a foreach loop in C# -->
+            <td>{{chore.title}}</td>
+            <td>{{chore.description}}</td>
+            <td><a href="#/EditChore/{{ chore._id }}">Edit</a></td>
+            <td><a ng-click="grabBag.deleteChore(chore._id)" href="">Delete</a></td>
+        </tr>
+
+        </tbody>
+    </table>
+    <form name="pickChore">
+        <input type="submit" class="btn btn-primary" value="Pick Chore" ng-click="grabBag.pickChore()"/>
+    </form>
+
+    Chore Picked:
+    {{ grabBag.chorePicked.title }}
+

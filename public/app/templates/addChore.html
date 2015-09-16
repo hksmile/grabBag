@@ -1,0 +1,33 @@
+<h3>Add Chore</h3>
+
+<form class="form-horizontal" role="form">
+    <div class="form-group">
+        <label for="choreTitle" class="col-sm-1 control-label">Title</label>
+        <div class="col-sm-4">
+            <input ng-model="grabBag.newChore.title" type="text" class="form-control" id="choreTitle" placeholder="Chore">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="choreDesc" class="col-sm-1 control-label">Description</label>
+        <div class="col-sm-4">
+            <input ng-model="grabBag.newChore.description" type="text" class="form-control" id="choreDesc" placeholder="Description">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="choreFreq" class="col-sm-1 control-label">Frequency</label>
+        <div class="col-sm-4">
+            <input ng-model="grabBag.newChore.frequency" type="text" class="form-control" id="choreFreq" placeholder="Frequency (days)">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="choreLevel" class="col-sm-1 control-label">Age</label>
+        <div class="col-sm-4">
+            <input ng-model="grabBag.newChore.level" type="text" class="form-control" id="choreLevel" placeholder="Age Level">
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-1 col-sm-5">
+            <button ng-click="grabBag.addChore()" class="btn btn-default">Save</button>
+        </div>
+    </div>
+</form>

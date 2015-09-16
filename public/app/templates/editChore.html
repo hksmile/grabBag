@@ -1,0 +1,34 @@
+<h3>Edit Chore</h3>
+
+<form class="form-horizontal" role="form">
+    <div class="form-group">
+        <label for="choreTitle" class="col-sm-1 control-label">Title</label>
+        <div class="col-sm-4">
+            <input ng-model="editGrabBag.currentChore.title" type="text" class="form-control" id="choreTitle" placeholder="Title">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="choreDesc" class="col-sm-1 control-label">Description</label>
+        <div class="col-sm-4">
+            <input ng-model="editGrabBag.currentChore.description" type="text" class="form-control" id="choreDesc" placeholder="Description">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="choreFreq" class="col-sm-1 control-label">Frequency</label>
+        <div class="col-sm-4">
+            <input ng-model="editGrabBag.currentChore.frequency" type="text" class="form-control" id="choreFreq" placeholder="Frequency">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="choreLevel" class="col-sm-1 control-label">Age</label>
+        <div class="col-sm-4">
+            <input ng-model="editGrabBag.currentChore.level" type="text" class="form-control" id="choreLevel" placeholder="Level">
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-1 col-sm-5">
+            <button class="btn btn-default" ng-click="editGrabBag.updateChore()">Save</button>
+
+        </div>
+    </div>
+</form>
