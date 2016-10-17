@@ -2,11 +2,13 @@
 
 
     angular.module('choreBag')
-        .factory('grabBagDataService', ['$http', '$q', grabBagDataService]);
+        .factory('grabBagDataService', ['$http', '$q', '$cacheFactory',grabBagDataService]);
 
 
-    function grabBagDataService($http, $q) {
 
+    function grabBagDataService($http, $q, $cacheFactory) {
+
+        var dataCache = $cacheFactory.get('choreCache');
 
         return {
             getAllBagItems: getAllBagItems,
@@ -23,26 +25,45 @@
 
         function getAllBagItems()
         {
-            
-            return $http({
-                method: 'GET',
-                url: 'api/grabBag'
-            })
-                .then(getAllBagItemsSuccess)
-                .catch(getAllBagItemsError)
+            if (!dataCache)
+            {
+                dataCache = $cacheFactory('choreCache');
+            }
+
+            var choreListFromCache = undefined; //dataCache.get('choreList');
+             if (choreListFromCache)
+             {
+                 var deferred = $q.defer();
+                 console.log('returned from cache');
+                 deferred.resolve(choreListFromCache);
+                 return deferred.promise;
+             }
+
+            else
+             {
+                 return $http({
+                     method: 'GET',
+                     url: 'api/grabBag'
+                 })
+                     .then(getAllBagItemsSuccess)
+                     .catch(getAllBagItemsError)
+             }
+
         }
 
         function getAllBagItemsSuccess(response){
-            var itemArray = [];
+            /*var itemArray = [];
 
             response.data.forEach( function(entry) {
 
                 itemArray.push(JSON.stringify(entry));
             });
 
-            console.log(itemArray);
+            console.log(itemArray);*/
 
 
+            console.log('putting in cache');
+            dataCache.put('choreList', response.data);
             return response.data;
         }
 
@@ -87,6 +108,7 @@
         }
 
         function addItemSuccess(response) {
+            deleteChoreListFromCache();
             return 'Item added: ';
         }
 
@@ -106,6 +128,7 @@
 
         function deleteItemSuccess(response)
         {
+            deleteChoreListFromCache();
             return 'Item delete';
         }
         function deleteItemError(response){
@@ -124,11 +147,21 @@
         }
         function updateItemSuccess(response)
         {
+            deleteChoreListFromCache();
             return 'Item updated';
         }
         function updateItemError(response)
         {
-            return $q.reject('Error updating item.  {HTTP statys: " + response.status' + ')');
+            return $q.reject('Error updating item.  {HTTP status: ' + response.status + ')');
+        }
+
+        function deleteChoreListFromCache()
+        {
+            if (dataCache)
+            {
+                console.log('cache deleted');
+                dataCache.remove('choreList');
+            }
         }
 
 

@@ -51,6 +51,7 @@
 
     function findGrabBagItem(itemID)
     {
+        console.log('find item in model ' + itemID);
         return GrabBagModel.findById(itemID);
     }
 

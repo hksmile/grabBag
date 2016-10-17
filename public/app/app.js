@@ -22,6 +22,11 @@ app.config(['$routeProvider', function($routeProvider) {
             controller: 'EditGrabBagController',
             controllerAs: 'editGrabBag'
         })
+        .when('/Admin', {
+            templateUrl: '/app/templates/grabBagAdmin.html',
+            controller: 'GrabBagController',
+            controllerAs: 'grabBag'
+        })
         .otherwise('/');
 
 }]);

@@ -35,7 +35,7 @@ router.route('/')
 
 router.route('/:itemID')
     .post(function(req, res) {
-        grabBagData.updateGrabBagItem(req.params.bagItem._id, req.body.title, req.body.description, req.body.frequency, req.body.level)
+        grabBagData.updateGrabBagItem(req.body._id, req.body.title, req.body.description, req.body.frequency, req.body.level)
             .then(function(err, item) {
                 if (err)
                 {

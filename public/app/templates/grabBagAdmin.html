@@ -1,0 +1,46 @@
+
+
+<div class="row">
+    <div class="col-sm-3 col-xs-1">
+
+        <img class="img-responsive" src="\images\choresticks.jpg">
+    </div>
+
+
+
+
+    <div class="col-sm-9 col-xs-11">
+
+<table class="table-striped table-hover table-responsive">
+    <thead>
+    <th>Chore</th>
+    <th>Description</th>
+    </thead>
+    <tbody>
+    <tr ng-repeat="chore in grabBag.bagItems"><!--works like a foreach loop in C# -->
+        <td>{{chore.title}}</td>
+        <td>{{chore.description}}</td>
+        <td><a ng-href="#/EditChore/{{ chore._id }}" class="btn"><span class="glyphicon glyphicon-pencil"></span></a>
+            <a ng-click="grabBag.deleteChore(chore._id)" href="" class="btn"><span class="glyphicon glyphicon-trash"</span></a></td>
+    </tr>
+
+    </tbody>
+</table>
+
+
+        <a ng-href="#/AddChore/" class="btn btn-primary btn-sm"></a>
+
+
+
+        <table class="table-bordered table-hover table-responsive">
+            <tbody>
+            <tr>
+                <td style="background-color:cornflowerblue">Blue</td>
+                <td style="background-color:lightgoldenrodyellow;">Yellow</td>
+                <td style="background-color:darkseagreen;">Green</td>
+                <td style="background-color:tan">Brown</td>
+            </tr>
+            </tbody>
+        </table>
+        </div>
+    </div>

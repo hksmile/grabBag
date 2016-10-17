@@ -1,12 +1,12 @@
 (function()
 {
 
-
     angular.module('choreBag')
         .controller("EditGrabBagController", ['grabBagDataService', '$q', '$routeParams', EditGrabBagController]);
 
     function EditGrabBagController(grabBagDataService, $q, $routeParams)
     {
+        // vm stand for ViewModel
         var vm = this;
 
 
@@ -18,8 +18,10 @@
 
         function getItemSuccess(chore)
         {
-            console.log('Found Chore: ' + chore);
+
             vm.currentChore = chore;
+            console.log('Found Chore: ' + vm.currentChore._id);
+
         }
         function getItemError(reason)
         {
@@ -34,7 +36,7 @@
                 .then(updateBagItemSuccess)
                 .catch(updateBagItemError);
         }
-        function updateBagItemSuccess()
+        function updateBagItemSuccess(response)
         {
             console.log(response);
         }

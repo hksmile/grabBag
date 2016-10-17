@@ -1,23 +1,34 @@
 
-    <table class="table-striped  table-hover table-responsive">
-        <thead>
-        <th>Name</th>
-        <th>Description</th>
-        </thead>
-        <tbody>
-        <tr ng-repeat="chore in grabBag.bagItems"><!--works like a foreach loop in C# -->
-            <td>{{chore.title}}</td>
-            <td>{{chore.description}}</td>
-            <td><a href="#/EditChore/{{ chore._id }}">Edit</a></td>
-            <td><a ng-click="grabBag.deleteChore(chore._id)" href="">Delete</a></td>
-        </tr>
 
-        </tbody>
-    </table>
+<div class="row">
+    <div class="col-sm-12">
+        <h2 class="text-center">Hello Naughty Child</h2>
+
+
     <form name="pickChore">
-        <input type="submit" class="btn btn-primary" value="Pick Chore" ng-click="grabBag.pickChore()"/>
+        <!-- <input type="image"  value="Pick Chore" src="\images\grabbag.jpeg" ng-click="grabBag.pickChore()"/> -->
+        <img src="\images\grabbag.jpeg"  class="img-responsive center-block" ng-click="grabBag.pickChore()"/>
     </form>
+    </div>
+</div>
+
+
+
+
 
     Chore Picked:
     {{ grabBag.chorePicked.title }}
 
+
+
+
+        <table class="table-bordered table-hover table-responsive">
+            <tbody>
+            <tr>
+                <td style="background-color:cornflowerblue">Blue</td>
+                <td style="background-color:lightgoldenrodyellow;">Yellow</td>
+                <td style="background-color:darkseagreen;">Green</td>
+                <td style="background-color:tan">Brown</td>
+            </tr>
+            </tbody>
+            </table>

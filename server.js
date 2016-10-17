@@ -28,6 +28,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+var config = require('./config.json');
 
 app.use('/', routes);
 app.use('/users', users);
@@ -66,7 +67,7 @@ app.use(function(err, req, res, next) {
 
 //db connections
 var mongoose = require('mongoose');
-var db_server = process.env.DB_ENV || 'mongodb://localhost/grabbag';
+var db_server = process.env.DB_ENV || config.connectionString; ;
 
 mongoose.connection.on("connected", function(ref) {
   console.log("connected to " + db_server + " DB");
