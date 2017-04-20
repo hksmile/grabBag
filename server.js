@@ -7,8 +7,8 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-var routes = require('./server/routes/index');
-var users = require('./server/routes/users');
+/*var routes = require('./server/routes/index');
+var users = require('./server/routes/users');*/
 var grabBag = require('./server/routes/grabBag');
 
 
@@ -28,11 +28,23 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-var config = require('./config.json');
 
-app.use('/', routes);
-app.use('/users', users);
-app.use('/api/grabBag', grabBag);
+var config = require('./config.json');
+var expressJwt = require('express-jwt');
+var session = require('express-session');
+
+app.use(session({ secret: config.secret, resave: false, saveUninitialized: true }));
+
+// use JWT auth to secure the api
+//app.use('/api', expressJwt({ secret: config.secret }).unless({ path: ['/api/users/authenticate', '/api/users/register'] }));
+
+
+// routes
+app.use('/login', require('./server/routes/login.controller'));
+app.use('/register', require('./server/routes/register.controller'));
+app.use('/public', require('./server/routes/app.controller'));
+app.use('/api/users', require('./server/routes/api/users.controller'));
+app.use('/api/grabBag', require('./server/routes/grabBag'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
