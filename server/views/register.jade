@@ -1,0 +1,20 @@
+﻿
+.form-container
+h2 Register
+.alert.alert-danger
+form(method='post')
+.form-group
+label(for='firstName') First name
+input#firstName.form-control(type='text', name='firstName', value='', required='')
+.form-group
+label(for='lastName') Last name
+input#lastName.form-control(type='text', name='lastName', value='', required='')
+.form-group
+label(for='username') Username
+input#username.form-control(type='text', name='username', value='', required='')
+.form-group
+label(for='password') Password
+input#password.form-control(type='password', name='password', required='')
+.form-group
+button.btn.btn-primary(type='submit') Register
+a.btn.btn-link(href='/login') Cancel
