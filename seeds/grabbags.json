@@ -1,0 +1,19 @@
+[
+{
+"title": "Feed Dog", "description": "Feed Dog 1 cup of food", "frequency":1, "level":3
+}
+,
+{
+"title": "Clean Toilet", "description": "Yucky", "frequency": 7, "level": 1
+},
+{
+"title": "Wash Clothes", "description": "wash dry fold and put away clothes", "frequency":7, "level":3
+},
+{
+  "title": "unload dishwasher", "description": "unload and put dishes away", "frequency":1, "level":5
+},
+{
+  "title": "free pass", "description": "Congrats!  You got away", "frequency":4, "level":1
+}
+  ]
+
